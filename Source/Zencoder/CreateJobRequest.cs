@@ -64,6 +64,12 @@ namespace Zencoder
         public Output[] Outputs { get; set; }
 
         /// <summary>
+        /// Gets or sets the output collection definiing outputs for the job.
+        /// </summary>
+        [JsonProperty("notifications", NullValueHandling = NullValueHandling.Ignore)]
+        public Notification[] Notifications { get; set; }
+
+        /// <summary>
         /// Gets or sets the pass_through value for the job.
         /// </summary>
         [JsonProperty("pass_through", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
