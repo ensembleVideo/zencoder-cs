@@ -14,16 +14,16 @@ namespace Zencoder
     /// Implements the job progress request.
     /// </summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-    public class JobProgressRequest : Request<JobProgressRequest, JobProgressResponse>
+    public class OutputProgressRequest : Request<OutputProgressRequest, OutputProgressResponse>
     {
-        private int jobId;
+        private int outputId;
         private Uri url;
 
         /// <summary>
         /// Initializes a new instance of the JobProgressRequest class.
         /// </summary>
         /// <param name="zencoder">The <see cref="Zencoder"/> service to create the request with.</param>
-        public JobProgressRequest(Zencoder zencoder)
+        public OutputProgressRequest(Zencoder zencoder)
             : base(zencoder)
         {
         }
@@ -33,7 +33,7 @@ namespace Zencoder
         /// </summary>
         /// <param name="apiKey">The API key to use when connecting to the service.</param>
         /// <param name="baseUrl">The service base URL.</param>
-        public JobProgressRequest(string apiKey, Uri baseUrl)
+        public OutputProgressRequest(string apiKey, Uri baseUrl)
             : base(apiKey, baseUrl)
         {
         }
@@ -41,16 +41,16 @@ namespace Zencoder
         /// <summary>
         /// Gets or sets the ID of the <see cref="Output"/> to get progress for.
         /// </summary>
-        public int JobId
+        public int OutputId
         {
             get
             {
-                return this.jobId;
+                return this.outputId;
             }
 
             set
             {
-                this.jobId = value;
+                this.outputId = value;
                 this.url = null;
             }
         }
@@ -64,12 +64,12 @@ namespace Zencoder
             {
                 if (this.url == null)
                 {
-                    if (this.jobId < 1)
+                    if (this.OutputId < 1)
                     {
-                        throw new InvalidOperationException("JobId must be set before generating the request URL.");
+                        throw new InvalidOperationException("OutputId must be set before generating the request URL.");
                     }
 
-                    string path = string.Format(CultureInfo.InvariantCulture, "jobs/{0}/progress", this.JobId);
+                    string path = string.Format(CultureInfo.InvariantCulture, "outputs/{0}/progress", this.OutputId);
                     this.url = BaseUrl.AppendPath(path).WithApiKey(ApiKey);
                 }
 

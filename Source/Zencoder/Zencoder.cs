@@ -4,6 +4,9 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System.Linq;
+using Newtonsoft.Json;
+
 namespace Zencoder
 {
     using System;
@@ -308,6 +311,40 @@ namespace Zencoder
         /// <param name="region">The region to perform the job in.</param>
         /// <param name="test">A value indicating whether to use test mode.</param>
         /// <param name="mock">A value indicating whether to mock the response rather than actually creating a job.</param>
+        /// <param name="passThrough">A value that will be passed along and stored with the request.</param>
+        /// <param name="notifications">Job level notifications.</param>
+        /// <returns>The call response.</returns>
+        public CreateJobResponse CreateJob(string input, IEnumerable<Output> outputs, int? downloadConnections, string region, bool? test, bool? mock, string passThrough, IEnumerable<Notification> notifications)
+        {
+            CreateJobRequest request = new CreateJobRequest(this)
+            {
+                DownloadConnections = downloadConnections,
+                Input = input,
+                Mock = mock,
+                Region = region,
+                Test = test,
+                PassThrough = passThrough,
+                Notifications = notifications != null ? notifications.ToArray() : null,
+                Outputs = outputs != null ? outputs.ToArray() : null,
+            };
+
+            var json = JsonConvert.SerializeObject(request);
+
+
+
+
+            return request.GetResponse();
+        }
+
+        /// <summary>
+        /// A blocking create job request/response cycle.
+        /// </summary>
+        /// <param name="input">The URL of the input file.</param>
+        /// <param name="outputs">The output definition collection.</param>
+        /// <param name="downloadConnections">The number of download connections to use when fetching the input file.</param>
+        /// <param name="region">The region to perform the job in.</param>
+        /// <param name="test">A value indicating whether to use test mode.</param>
+        /// <param name="mock">A value indicating whether to mock the response rather than actually creating a job.</param>
         /// <param name="callback">The call response.</param>
         public void CreateJob(string input, IEnumerable<Output> outputs, int? downloadConnections, string region, bool? test, bool? mock, Action<CreateJobResponse> callback)
         {
@@ -344,6 +381,34 @@ namespace Zencoder
                 Region = region,
                 Test = test,
                 PassThrough = passThrough
+            };
+
+            request.WithOutputs(outputs).GetResponseAsync(callback);
+        }
+
+        /// <summary>
+        /// A blocking create job request/response cycle.
+        /// </summary>
+        /// <param name="input">The URL of the input file.</param>
+        /// <param name="outputs">The output definition collection.</param>
+        /// <param name="downloadConnections">The number of download connections to use when fetching the input file.</param>
+        /// <param name="region">The region to perform the job in.</param>
+        /// <param name="test">A value indicating whether to use test mode.</param>
+        /// <param name="mock">A value indicating whether to mock the response rather than actually creating a job.</param>
+        /// <param name="passThrough">A value that will be passed along and stored with the request.</param>
+        /// <param name="notifications">Job level notifications.</param>
+        /// <param name="callback">The call response.</param>
+        public void CreateJob(string input, IEnumerable<Output> outputs, int? downloadConnections, string region, bool? test, bool? mock, string passThrough, IEnumerable<Notification>notifications, Action<CreateJobResponse> callback)
+        {
+            CreateJobRequest request = new CreateJobRequest(this)
+            {
+                DownloadConnections = downloadConnections,
+                Input = input,
+                Mock = mock,
+                Region = region,
+                Test = test,
+                PassThrough = passThrough,
+                Notifications = notifications != null ? notifications.ToArray() : null
             };
 
             request.WithOutputs(outputs).GetResponseAsync(callback);
@@ -413,13 +478,13 @@ namespace Zencoder
         /// <summary>
         /// A blocking job progress request/response cycle.
         /// </summary>
-        /// <param name="outputId">The ID of the output (NOT the job ID) to get progress for.</param>
+        /// <param name="jobId">The ID of the job to get progress for.</param>
         /// <returns>The call response.</returns>
-        public JobProgressResponse JobProgress(int outputId)
+        public JobProgressResponse JobProgress(int jobId)
         {
             JobProgressRequest request = new JobProgressRequest(this)
             {
-                OutputId = outputId
+                JobId = jobId
             };
 
             return request.GetResponse();
@@ -428,11 +493,71 @@ namespace Zencoder
         /// <summary>
         /// A non blocking job progress request/response cycle.
         /// </summary>
-        /// <param name="outputId">The ID of the output (NOT the job ID) to get progress for.</param>
+        /// <param name="jobId">The ID of job to get progress for.</param>
         /// <param name="callback">The call response.</param>
-        public void JobProgress(int outputId, Action<JobProgressResponse> callback)
+        public void JobProgress(int jobId, Action<JobProgressResponse> callback)
         {
             JobProgressRequest request = new JobProgressRequest(this)
+            {
+                JobId = jobId
+            };
+
+            request.GetResponseAsync(callback);
+        }
+
+        /// <summary>
+        /// A blocking input progress request/response cycle.
+        /// </summary>
+        /// <param name="inputId">The ID of the output (NOT the job ID) to get progress for.</param>
+        /// <returns>The call response.</returns>
+        public InputProgressResponse InputProgress(int inputId)
+        {
+            InputProgressRequest request = new InputProgressRequest(this)
+            {
+                InputId = inputId
+            };
+
+            return request.GetResponse();
+        }
+
+        /// <summary>
+        /// A non blocking output progress request/response cycle.
+        /// </summary>
+        /// <param name="inputId">The ID of the input (NOT the job ID) to get progress for.</param>
+        /// <param name="callback">The call response.</param>
+        public void InputProgress(int inputId, Action<InputProgressResponse> callback)
+        {
+            InputProgressRequest request = new InputProgressRequest(this)
+            {
+                InputId = inputId
+            };
+
+            request.GetResponseAsync(callback);
+        }
+
+        /// <summary>
+        /// A blocking output progress request/response cycle.
+        /// </summary>
+        /// <param name="outputId">The ID of the output (NOT the job ID) to get progress for.</param>
+        /// <returns>The call response.</returns>
+        public OutputProgressResponse OutputProgress(int outputId)
+        {
+            OutputProgressRequest request = new OutputProgressRequest(this)
+            {
+                OutputId = outputId
+            };
+
+            return request.GetResponse();
+        }
+
+        /// <summary>
+        /// A non blocking output progress request/response cycle.
+        /// </summary>
+        /// <param name="outputId">The ID of the output (NOT the job ID) to get progress for.</param>
+        /// <param name="callback">The call response.</param>
+        public void OutputProgress(int outputId, Action<OutputProgressResponse> callback)
+        {
+            OutputProgressRequest request = new OutputProgressRequest(this)
             {
                 OutputId = outputId
             };

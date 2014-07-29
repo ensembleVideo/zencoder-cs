@@ -13,22 +13,28 @@ namespace Zencoder
     /// Implements the job progress response.
     /// </summary>
     [JsonObject(MemberSerialization = MemberSerialization.OptIn)]
-    public class JobProgressResponse : Response<JobProgressRequest, JobProgressResponse>
+    public class InputProgressResponse : Response<InputProgressRequest, InputProgressResponse>
     {
         /// <summary>
-        /// Gets or sets the input progress for the current job.
+        /// Gets or sets the input id.
         /// </summary>
-        [JsonProperty("input")]
-        public InputProgressResponse Input { get; set; }
+        [JsonProperty("id")]
+        public int? InputId { get; set; }
         
         /// <summary>
-        /// Gets or sets the output progress for the current job.
+        /// Gets or sets the event currently in progress for the input.
         /// </summary>
-        [JsonProperty("outputs")]
-        public OutputProgressResponse[] Outputs { get; set; }
+        [JsonProperty("current_event")]
+        public OutputEvent CurrentEvent { get; set; }
 
         /// <summary>
-        /// Gets or sets the progress of the Job
+        /// Gets or sets the progress of <see cref="CurrentEventProgress"/>.
+        /// </summary>
+        [JsonProperty("current_event_progress")]
+        public double CurrentEventProgress { get; set; }
+
+        /// <summary>
+        /// Gets or sets the progress of <see cref="CurrentEvent"/>.
         /// </summary>
         [JsonProperty("progress")]
         public double Progress { get; set; }
@@ -37,6 +43,6 @@ namespace Zencoder
         /// Gets or sets the output's current state.
         /// </summary>
         [JsonProperty("state")]
-        public JobState State { get; set; }
+        public OutputState State { get; set; }
     }
 }

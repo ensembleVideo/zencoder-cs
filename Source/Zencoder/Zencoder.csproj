@@ -100,7 +100,11 @@
     <Compile Include="Job.cs" />
     <Compile Include="JobDetailsRequest.cs" />
     <Compile Include="JobDetailsResponse.cs" />
+    <Compile Include="InputProgressRequest.cs" />
+    <Compile Include="OutputProgressRequest.cs" />
     <Compile Include="JobProgressRequest.cs" />
+    <Compile Include="InputProgressResponse.cs" />
+    <Compile Include="OutputProgressResponse.cs" />
     <Compile Include="JobProgressResponse.cs" />
     <Compile Include="JobState.cs" />
     <Compile Include="JobWrapper.cs" />
