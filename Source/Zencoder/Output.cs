@@ -178,6 +178,49 @@ namespace Zencoder
         public DeviceProfile? DeviceProfile { get; set; }
 
         /// <summary>
+        /// Gets or sets a encryption initialization vector, if applicable.
+        /// </summary>
+        [JsonProperty("encryption_iv", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+        public string EncryptionIV { get; set; }
+
+        /// <summary>
+        /// Gets or sets a encrytion key to use for the output, if applicable.
+        /// </summary>
+        [JsonProperty("encryption_key", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+        public string EncryptionKey { get; set; }
+
+        /// <summary>
+        /// Gets or sets the encryption key rotation period in segments, if applicable.
+        /// </summary>
+        [JsonProperty("encryption_key_rotation_period", NullValueHandling = NullValueHandling.Ignore)]
+        public int? EncryptionKeyRotationPeriod { get; set; }
+
+        /// <summary>
+        /// Gets or sets a encrytion key url to use for the output, if applicable.
+        /// </summary>
+        [JsonProperty("encryption_key_url", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+        public string EncryptionKeyUrl { get; set; }
+
+        /// <summary>
+        /// Gets or sets a encrytion key url prefix to use for the output, if applicable.
+        /// </summary>
+        [JsonProperty("encryption_key_url_prefix", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+        public string EncryptionKeyUrlPrefix { get; set; }
+
+        /// <summary>
+        /// Gets or sets a encrytion method to use for the output, if applicable.
+        /// </summary>
+        [JsonProperty("encryption_method", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+        public string EncryptionMethod { get; set; }
+
+        /// <summary>
+        /// Gets or sets a encrytion password used for generating an intialization vector, if applicable.
+        /// </summary>
+        [JsonProperty("encryption_password", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+        public string EncryptionPassword { get; set; }
+
+
+        /// <summary>
         /// Gets or sets the file name of the finished file. If supplied and <see cref="BaseUrl"/>
         /// is empty, Zencoder will store a file with this name in an S3 bucket for download.
         /// </summary>
