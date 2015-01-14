@@ -327,6 +327,13 @@ namespace Zencoder
         public int? MaxVideoBitrate { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether to copy the input audio track, if one is present.
+        /// </summary>
+        [JsonProperty("generate_md5_checksum", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonConverter(typeof(BooleanConverter))]
+        public bool? GenerateMD5Checksum { get; set; }
+
+        /// <summary>
         /// Gets or sets the collection of notifications to define for the output.
         /// </summary>
         [JsonProperty("notifications", NullValueHandling = NullValueHandling.Ignore)]

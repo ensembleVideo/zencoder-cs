@@ -29,6 +29,12 @@ namespace Zencoder
         public MediaFileFormat Format { get; set; }
 
         /// <summary>
+        /// Gets or sets the file's error message.
+        /// </summary>
+        [JsonProperty("label")]
+        public string Label { get; set; }
+
+        /// <summary>
         /// Gets or sets the file's state with respect to its parent job.
         /// </summary>
         [JsonProperty("state")]

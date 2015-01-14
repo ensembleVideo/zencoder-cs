@@ -38,7 +38,7 @@ namespace Zencoder
         /// Gets or sets the date the file was created.
         /// </summary>
         [JsonProperty("created_at")]
-        [JsonConverter(typeof(IsoDateTimeConverter))]
+        [JsonConverter(typeof (IsoDateTimeConverter))]
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Zencoder
         /// Gets or sets the date the file was finished.
         /// </summary>
         [JsonProperty("finished_at")]
-        [JsonConverter(typeof(IsoDateTimeConverter))]
+        [JsonConverter(typeof (IsoDateTimeConverter))]
         public DateTime? FinishedAt { get; set; }
 
         /// <summary>
@@ -89,6 +89,12 @@ namespace Zencoder
         /// </summary>
         [JsonProperty("id")]
         public int Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the file's error message.
+        /// </summary>
+        [JsonProperty("md5_checksum")]
+        public string MD5Checksum { get; set; }
 
         /// <summary>
         /// Gets or sets the file's total bitrate (in Kbps).
