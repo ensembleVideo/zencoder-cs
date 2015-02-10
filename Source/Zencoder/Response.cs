@@ -50,6 +50,11 @@ namespace Zencoder
         }
 
         /// <summary>
+        /// Gets the number of remaining requests allowed per quota.  This is the value sent in the "X-Zencoder-Rate-Remaining" header.
+        /// </summary>
+        public int RateRemaining { get; internal set; }
+
+        /// <summary>
         /// Creates a new <see cref="Response"/> instance from the given JSON string.
         /// </summary>
         /// <typeparam name="TRequest">The concrete <see cref="Request"/> implementor.</typeparam>

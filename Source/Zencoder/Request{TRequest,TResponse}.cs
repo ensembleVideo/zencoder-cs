@@ -192,6 +192,7 @@ namespace Zencoder
             if (response != null)
             {
                 resultResponse.StatusCode = response.StatusCode;
+                resultResponse.RateRemaining = int.Parse(response.GetResponseHeader("X-Zencoder-Rate-Remaining"));
             }
 
             resultResponse.RequestException = ex;
