@@ -41,15 +41,18 @@ namespace Zencoder
             {
                 try
                 {
+                    objectType = Nullable.GetUnderlyingType(objectType) ?? objectType;
                     result = Enum.Parse(objectType, str, true);
                 }
-                catch (ArgumentException)
+                catch (ArgumentException ex)
                 {
                 }
             }
 
             return result;
         }
+
+
 
         /// <summary>
         /// Writes the JSON representation of the object. 
