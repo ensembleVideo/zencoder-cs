@@ -28,6 +28,21 @@ namespace Zencoder
         /// <summary>
         /// Identifies the high profile.
         /// </summary>
-        High
+        High,
+
+        /// <summary>
+        /// Identifies the high 10 profile.
+        /// </summary>
+        High10,
+
+        /// <summary>
+        /// Identifies the High 4:4:2 profile 
+        /// </summary>
+        High422,
+
+        /// <summary>
+        /// Identifies the High 4:4:4 profile 
+        /// </summary>
+        High444
     }
 }

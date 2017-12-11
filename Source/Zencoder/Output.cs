@@ -261,6 +261,14 @@ namespace Zencoder
         [JsonProperty("h264_profile", NullValueHandling = NullValueHandling.Ignore)]
         public H264Profile? H264Profile { get; set; }
 
+
+        /// <summary>
+        /// Gets or sets the profile to use when performing H264 encoding.
+        /// </summary>
+        [JsonProperty("video_codec_profile", NullValueHandling = NullValueHandling.Ignore)]
+        public H264Profile? VideoCodecProfile { get; set; }
+
+
         /// <summary>
         /// Gets or sets the number of reference frames to use when performing H264 encoding.
         /// </summary>
