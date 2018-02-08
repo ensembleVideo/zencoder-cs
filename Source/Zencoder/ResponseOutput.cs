@@ -21,5 +21,11 @@ namespace Zencoder
         [JsonProperty("id")]
         [JsonConverter(typeof(DefaultingIntegerConverter))]
         public int Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the output label, if applicable.
+        /// </summary>
+        [JsonProperty("label", DefaultValueHandling = DefaultValueHandling.Ignore, NullValueHandling = NullValueHandling.Ignore)]
+        public string Label { get; set; }
     }
 }
