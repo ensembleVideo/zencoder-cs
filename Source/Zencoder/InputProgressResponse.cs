@@ -19,7 +19,7 @@ namespace Zencoder
         /// Gets or sets the input id.
         /// </summary>
         [JsonProperty("id")]
-        public int? InputId { get; set; }
+        public long? InputId { get; set; }
         
         /// <summary>
         /// Gets or sets the event currently in progress for the input.

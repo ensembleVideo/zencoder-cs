@@ -19,7 +19,7 @@ namespace Zencoder
         /// Gets or sets the output id.
         /// </summary>
         [JsonProperty("id")]
-        public int? OutputId { get; set; }
+        public long? OutputId { get; set; }
         
         /// <summary>
         /// Gets or sets the event currently in progress for the output.

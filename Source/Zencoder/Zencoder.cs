@@ -205,7 +205,7 @@ namespace Zencoder
         /// </summary>
         /// <param name="jobId">The ID of the job to cancel.</param>
         /// <returns>The call response.</returns>
-        public CancelJobResponse CancelJob(int jobId)
+        public CancelJobResponse CancelJob(long jobId)
         {
             CancelJobRequest request = new CancelJobRequest(this)
             {
@@ -220,7 +220,7 @@ namespace Zencoder
         /// </summary>
         /// <param name="jobId">The ID of the job to cancel.</param>
         /// <param name="callback">The call response.</param>
-        public void CancelJob(int jobId, Action<CancelJobResponse> callback)
+        public void CancelJob(long jobId, Action<CancelJobResponse> callback)
         {
             CancelJobRequest request = new CancelJobRequest(this)
             {
@@ -420,7 +420,7 @@ namespace Zencoder
         /// </summary>
         /// <param name="jobId">The ID of the job to delete.</param>
         /// <returns>The call response.</returns>
-        public DeleteJobResponse DeleteJob(int jobId)
+        public DeleteJobResponse DeleteJob(long jobId)
         {
             DeleteJobRequest request = new DeleteJobRequest(this)
             {
@@ -435,7 +435,7 @@ namespace Zencoder
         /// </summary>
         /// <param name="jobId">The ID of the job to delete.</param>
         /// <param name="callback">The call response.</param>
-        public void DeleteJob(int jobId, Action<DeleteJobResponse> callback)
+        public void DeleteJob(long jobId, Action<DeleteJobResponse> callback)
         {
             DeleteJobRequest request = new DeleteJobRequest(this)
             {
@@ -450,7 +450,7 @@ namespace Zencoder
         /// </summary>
         /// <param name="jobId">The ID of the job to get details for.</param>
         /// <returns>The call response.</returns>
-        public JobDetailsResponse JobDetails(int jobId)
+        public JobDetailsResponse JobDetails(long jobId)
         {
             JobDetailsRequest request = new JobDetailsRequest(this)
             {
@@ -465,7 +465,7 @@ namespace Zencoder
         /// </summary>
         /// <param name="jobId">The ID of the job to get details for.</param>
         /// <param name="callback">The call response.</param>
-        public void JobDetails(int jobId, Action<JobDetailsResponse> callback)
+        public void JobDetails(long jobId, Action<JobDetailsResponse> callback)
         {
             JobDetailsRequest request = new JobDetailsRequest(this)
             {
@@ -480,7 +480,7 @@ namespace Zencoder
         /// </summary>
         /// <param name="jobId">The ID of the job to get progress for.</param>
         /// <returns>The call response.</returns>
-        public JobProgressResponse JobProgress(int jobId)
+        public JobProgressResponse JobProgress(long jobId)
         {
             JobProgressRequest request = new JobProgressRequest(this)
             {
@@ -495,7 +495,7 @@ namespace Zencoder
         /// </summary>
         /// <param name="jobId">The ID of job to get progress for.</param>
         /// <param name="callback">The call response.</param>
-        public void JobProgress(int jobId, Action<JobProgressResponse> callback)
+        public void JobProgress(long jobId, Action<JobProgressResponse> callback)
         {
             JobProgressRequest request = new JobProgressRequest(this)
             {
@@ -510,7 +510,7 @@ namespace Zencoder
         /// </summary>
         /// <param name="inputId">The ID of the output (NOT the job ID) to get progress for.</param>
         /// <returns>The call response.</returns>
-        public InputProgressResponse InputProgress(int inputId)
+        public InputProgressResponse InputProgress(long inputId)
         {
             InputProgressRequest request = new InputProgressRequest(this)
             {
@@ -525,7 +525,7 @@ namespace Zencoder
         /// </summary>
         /// <param name="inputId">The ID of the input (NOT the job ID) to get progress for.</param>
         /// <param name="callback">The call response.</param>
-        public void InputProgress(int inputId, Action<InputProgressResponse> callback)
+        public void InputProgress(long inputId, Action<InputProgressResponse> callback)
         {
             InputProgressRequest request = new InputProgressRequest(this)
             {
@@ -540,7 +540,7 @@ namespace Zencoder
         /// </summary>
         /// <param name="outputId">The ID of the output (NOT the job ID) to get progress for.</param>
         /// <returns>The call response.</returns>
-        public OutputProgressResponse OutputProgress(int outputId)
+        public OutputProgressResponse OutputProgress(long outputId)
         {
             OutputProgressRequest request = new OutputProgressRequest(this)
             {
@@ -555,7 +555,7 @@ namespace Zencoder
         /// </summary>
         /// <param name="outputId">The ID of the output (NOT the job ID) to get progress for.</param>
         /// <param name="callback">The call response.</param>
-        public void OutputProgress(int outputId, Action<OutputProgressResponse> callback)
+        public void OutputProgress(long outputId, Action<OutputProgressResponse> callback)
         {
             OutputProgressRequest request = new OutputProgressRequest(this)
             {
@@ -612,7 +612,7 @@ namespace Zencoder
         /// </summary>
         /// <param name="jobId">The ID of the job to resubmit.</param>
         /// <returns>The call response.</returns>
-        public ResubmitJobResponse ResubmitJob(int jobId)
+        public ResubmitJobResponse ResubmitJob(long jobId)
         {
             ResubmitJobRequest request = new ResubmitJobRequest(this)
             {
@@ -627,7 +627,7 @@ namespace Zencoder
         /// </summary>
         /// <param name="jobId">The ID of the job to resubmit.</param>
         /// <param name="callback">The call response.</param>
-        public void ResubmitJob(int jobId, Action<ResubmitJobResponse> callback)
+        public void ResubmitJob(long jobId, Action<ResubmitJobResponse> callback)
         {
             ResubmitJobRequest request = new ResubmitJobRequest(this)
             {
